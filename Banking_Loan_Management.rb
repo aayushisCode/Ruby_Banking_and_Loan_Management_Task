@@ -14,7 +14,7 @@ class BankAccount
     @transactions = []
     
   end
-#GENERATE ACCOUNT NUMBERwhy
+#GENERATE ACCOUNT NUMBER 
   def generate_account_number
     loop do 
       letter = ("A".."Z").to_a.sample
@@ -28,7 +28,7 @@ class BankAccount
     end
   end
 
-#CREATE_AMOUNT
+#CREATE_Account
   def create_account(customer_name, account_type, opening_balance)
     @customer_name = customer_name
     @account_type = account_type.downcase
@@ -77,6 +77,7 @@ class BankAccount
     puts "Current balance #{@balance}"
     true
   end
+  
 #CHECK WITHDRAWAL AMOUNT EVERYTIME BEFORE WITHDRAWING AN  AMOUNT
   def withdraw?(amount)
     amount = amount.to_f
@@ -91,6 +92,7 @@ class BankAccount
     end
     true
   end
+  
 #WITHDRAW AMOUNT
   def withdraw(amount)
     amount = amount.to_f
@@ -135,7 +137,7 @@ class BankAccount
                           puts "Amount before transaction #{transaction[:amount]}"
                           puts "Balance after successful transaction: #{transaction[:balance_after]}"}
   end
-  
+  #Loan_summary
   def loan_summary(type,amount,time)
     type=type.to_s.downcase
     if time <=0 
@@ -152,7 +154,7 @@ class BankAccount
     puts "Loan interest: #{loan}"
     puts "Total paybale amount: #{amount + loan}"
   end
-  ###########
+  ###########Current to saving 
 
 def current_to_saving(saving_account, amount)
   amount = amount.to_f
@@ -182,13 +184,14 @@ def transfer_without_validation(amount)
 end
 
 
-#############
+############# saving ro current 
   def saving_to_current(current_account, amount)
     amount = amount.to_f
     unless @account_type == "savings" && current_account.account_type == "current"
       puts "Inavlid account types for transfer"
       return false
     end
+    
 #executed when false/nil
     unless withdraw?(amount)
       puts "Transfer rejected: insufficient balance"
